@@ -1,10 +1,5 @@
 {{ define "main" }}
 
-<!-- Main Title -->
-{{ if .Title }}
-<h1 class="main-title">{{ .Title }}</h1>
-{{ end }}
-
 <!-- $pages -->
 {{ $pages := union .RegularPages .Sections }}
 <!---->{{ if .IsHome }} {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
@@ -14,7 +9,6 @@
 {{ $paginator := .Paginate $pages }} {{ range $index, $page := $paginator.Pages }}
 <article class="post-entry">
   <h2>{{ .Title }}</h2>
-  <time>{{ .Date | time.Format ":date_medium" }}</time>
   <a href="{{ .Permalink }}"></a>
 </article>
 {{ end }}
